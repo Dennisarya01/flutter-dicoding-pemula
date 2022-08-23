@@ -19,7 +19,6 @@ class CardItem extends StatelessWidget {
                   arguments: item);
             },
             child: Container(
-              height: 90,
               padding: EdgeInsets.symmetric(horizontal: 12),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.all(
@@ -29,85 +28,92 @@ class CardItem extends StatelessWidget {
               child: Row(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  Stack(
-                    children: [
-                      Container(
-                        height: 80,
-                        width: 80,
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(12),
-                          image: DecorationImage(
-                            fit: BoxFit.cover,
-                            image: AssetImage(item.imageAsset),
+                  Expanded(
+                    flex: 1,
+                    child: Stack(
+                      children: [
+                        Container(
+                          height: 80,
+                          width: 80,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(12),
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                              image: AssetImage(item.imageAsset),
+                            ),
                           ),
                         ),
-                      ),
-                      item.isPopular
-                          ? Container(
-                              width: 70,
-                              height: 30,
-                              decoration: BoxDecoration(
-                                color: kAmberLight,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(4),
+                        item.isPopular
+                            ? Container(
+                                width: 70,
+                                height: 30,
+                                decoration: BoxDecoration(
+                                  color: kAmberLight,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(4),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'POPULAR',
+                                    style: TextStyle(
+                                        color: kWhiteColor,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 12),
+                                  ),
+                                ),
+                              )
+                            : Container(
+                                width: 40,
+                                height: 25,
+                                decoration: BoxDecoration(
+                                  color: kBlueLight,
+                                  borderRadius: BorderRadius.all(
+                                    Radius.circular(4),
+                                  ),
+                                ),
+                                child: Center(
+                                  child: Text(
+                                    'NEW',
+                                    style: TextStyle(
+                                        color: kWhiteColor,
+                                        fontWeight: FontWeight.w700,
+                                        fontSize: 12),
+                                  ),
                                 ),
                               ),
-                              child: Center(
-                                child: Text(
-                                  'POPULAR',
-                                  style: TextStyle(
-                                      color: kWhiteColor,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 12),
-                                ),
-                              ),
-                            )
-                          : Container(
-                              width: 40,
-                              height: 25,
-                              decoration: BoxDecoration(
-                                color: kBlueLight,
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(4),
-                                ),
-                              ),
-                              child: Center(
-                                child: Text(
-                                  'NEW',
-                                  style: TextStyle(
-                                      color: kWhiteColor,
-                                      fontWeight: FontWeight.w700,
-                                      fontSize: 12),
-                                ),
-                              ),
-                            ),
-                    ],
+                      ],
+                    ),
                   ),
-                  Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Container(
-                      width: 200,
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            item.name,
-                            style: TextStyle(
-                              fontSize: 18,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          Padding(
-                            padding: const EdgeInsets.symmetric(vertical: 8.0),
-                            child: Text(
-                              item.location,
+                  Expanded(
+                    flex: 2,
+                    child: Padding(
+                      padding: const EdgeInsets.all(12.0),
+                      child: Container(
+                        width: 200,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              item.name,
                               style: TextStyle(
-                                fontSize: 14,
-                                color: Colors.grey,
+                                fontSize: 18,
+                                fontWeight: FontWeight.bold,
                               ),
                             ),
-                          ),
-                        ],
+                            Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 8.0),
+                              child: Text(
+                                item.location,
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
